@@ -1,5 +1,7 @@
 # Project: Mesto
 
+Demo on github Pages: https://alisakrasnopolina.github.io/mesto
+
 ### Project description
 
 Educational project Yandex Practicum - a one-page site with adaptive design, profile on a fictional social network.
