@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Путешествие по России</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="stylesheet" href="pages/index.css">
+</head> 
+<body class="root">
+  <header class="header">
+    <img src="./images/logo_header.svg" alt="Логотип" class="header__logo">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <div class="profile__user">
+        <img src="./images/image_kusto.jpg" alt="Аватар" class="profile__avatar">
+        <div class="profile__info">
+          <div class="profile__edit">
+            <h2 class="profile__name">Жак-Ив Кусто</h2>
+            <button type="button" href="#" class="profile__edit-button hover"></button>
+          </div>
+          <p class="profile__occupation">Исследователь океана</p>
+        </div>
+      </div>
+      <button type="button" href="#" class="profile__add-button hover"></button>
+    </section>
+    <section class="elements">
+      <div class="elements__card">
+        <img src="./images/karachevsk-card.jpg" alt="Изображение" class="elements__pic">
+        <div class="elements__description">
+          <p class="elements__name">Карачаевск</p>
+          <a href="#" class="elements__heart"></a>
+        </div>
+      </div>
+      <div class="elements__card">
+        <img src="./images/elbrus-card.jpg" alt="Изображение" class="elements__pic">
+        <div class="elements__description">
+          <p class="elements__name">Гора Эльбрус</p>
+          <a href="#" class="elements__heart"></a>
+        </div>
+      </div>
+      <div class="elements__card">
+        <img src="./images/dombay-card.jpg" alt="Изображение" class="elements__pic">
+        <div class="elements__description">
+          <p class="elements__name">Домбай</p>
+          <a href="#" class="elements__heart"></a>
+        </div>
+      </div>
+      <div class="elements__card">
+        <img src="./images/elbrus-card.jpg" alt="Изображение" class="elements__pic">
+        <div class="elements__description">
+          <p class="elements__name">Гора Эльбрус</p>
+          <a href="#" class="elements__heart"></a>
+        </div>
+      </div>
+      <div class="elements__card">
+        <img src="./images/dombay-card.jpg" alt="Изображение" class="elements__pic">
+        <div class="elements__description">
+          <p class="elements__name">Домбай</p>
+          <a href="#" class="elements__heart"></a>
+        </div>
+      </div>
+      <div class="elements__card">
+        <img src="./images/karachevsk-card.jpg" alt="Изображение" class="elements__pic">
+        <div class="elements__description">
+          <p class="elements__name">Карачаево-Черкессия</p>
+          <a href="#" class="elements__heart"></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__text">&copy;&nbsp;2022 Mesto Russia</p>
+  </footer>
+  <div class="popup">
+    <div class="popup__container">
+      <form class="popup__content">
+        <button type="button" class="popup__close hover"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" placeholder="Имя" value="" class="popup__text popup__text_data_name">
+        <input type="text" placeholder="О себе" value="" class="popup__text popup__text_data_about">
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <script src="./scripts/index.js"></script>
+</body>
+</html>

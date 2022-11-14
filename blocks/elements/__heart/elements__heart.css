@@ -1,0 +1,11 @@
+.elements__heart {
+  background-image: url(../../../images/heart-card.svg);
+  height: 19px;
+  width: 22px;
+  opacity: 1;
+  transition: opasity 0.3s ease;
+}
+
+.elements__heart:hover {
+  opacity: 0.5;
+}
