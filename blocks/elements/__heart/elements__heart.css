@@ -4,6 +4,8 @@
   width: 22px;
   opacity: 1;
   transition: opasity 0.3s ease;
+  border: none;
+  background-color: #fff;
 }
 
 .elements__heart:hover {

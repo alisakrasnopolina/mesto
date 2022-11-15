@@ -15,7 +15,7 @@
 
 .popup__text:focus {
   outline: none;
-  border-bottom: 1px solid rgba(0, 0, 0);
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
 @media screen and (max-width: 568px) {
