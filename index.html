@@ -25,54 +25,13 @@
       <button type="button" class="profile__add-button hover"></button>
     </section>
     <section class="elements">
-      <div class="elements__card">
-        <img src="./images/karachevsk-card.jpg" alt="Изображение Карачаевск" class="elements__pic">
-        <div class="elements__description">
-          <p class="elements__name">Карачаевск</p>
-          <button type="button" class="elements__heart"></button>
-        </div>
-      </div>
-      <div class="elements__card">
-        <img src="./images/elbrus-card.jpg" alt="Изображение Гора Эльбрус" class="elements__pic">
-        <div class="elements__description">
-          <p class="elements__name">Гора Эльбрус</p>
-          <button type="button" class="elements__heart"></button>
-        </div>
-      </div>
-      <div class="elements__card">
-        <img src="./images/dombay-card.jpg" alt="Изображение Домбай" class="elements__pic">
-        <div class="elements__description">
-          <p class="elements__name">Домбай</p>
-          <button type="button" class="elements__heart"></button>
-        </div>
-      </div>
-      <div class="elements__card">
-        <img src="./images/elbrus-card.jpg" alt="Изображение Гора Эльбрус" class="elements__pic">
-        <div class="elements__description">
-          <p class="elements__name">Гора Эльбрус</p>
-          <button type="button" class="elements__heart"></button>
-        </div>
-      </div>
-      <div class="elements__card">
-        <img src="./images/dombay-card.jpg" alt="Изображение Домбай" class="elements__pic">
-        <div class="elements__description">
-          <p class="elements__name">Домбай</p>
-          <button type="button" class="elements__heart"></button>
-        </div>
-      </div>
-      <div class="elements__card">
-        <img src="./images/karachevsk-card.jpg" alt="Изображение Карачаево-Черкессия" class="elements__pic">
-        <div class="elements__description">
-          <p class="elements__name">Карачаево-Черкессия</p>
-          <button type="button" class="elements__heart"></button>
-        </div>
-      </div>
+
     </section>
   </main>
   <footer class="footer">
     <p class="footer__text">&copy;&nbsp;2022 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup" id="popup_name_form">
     <div class="popup__container">
       <div class="popup__content">
         <button type="button" class="popup__close hover"></button>
@@ -85,6 +44,38 @@
       </div>
     </div>
   </div>
+  <div class="popup" id="popup_name_card">
+    <div class="popup__container">
+      <div class="popup__content">
+        <button type="button" class="popup__close hover"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form>
+          <input type="text" placeholder="Название" value="" class="popup__text popup__text_data_title">
+          <input type="text" placeholder="Ссылка на картинку" value="" class="popup__text popup__text_data_link">
+          <button type="submit" class="popup__submit-button">Создать</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="popup" id="popup_name_pic">
+    <div class="popup__container">
+      <div class="popup__image">
+        <button type="button" class="popup__close hover"></button>
+        <img src="" alt="Изображение" class="popup__pic">
+        <p class="popup__name"></p>
+      </div> 
+    </div>
+  </div>
+  <template id="card">
+    <div class="elements__card">
+      <button type="button" class="elements__trash hover"></button>
+      <img src="" alt="Изображение" class="elements__pic">
+      <div class="elements__description">
+        <p class="elements__name"></p>
+        <button type="button" class="elements__heart"></button>
+      </div>
+    </div>
+  </template> 
   <script src="./scripts/index.js"></script>
 </body>
 </html>
