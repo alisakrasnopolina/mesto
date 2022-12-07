@@ -52,7 +52,7 @@ initialCards.forEach(function (item) {
   cards.append(cardElement);
 });
 
-function addCard (evt) {
+function addCard(evt) {
   evt.preventDefault();
 
   const cardElement = createCard(titleInput.value, linkInput.value);
@@ -64,8 +64,29 @@ function addCard (evt) {
   formPopupCard.querySelector('#popup_form_card').reset();
 };
 
-const openPopup = function(popupElement) {
+function closePopupwithEsc(evt, popupElement) {
+  if (evt.key === 'Escape') {
+    closePopup(popupElement);
+  }
+};
+
+function closePopupwithOverlay(evt, popupElement) {
+  if (evt.target.classList.contains('popup__container')) {
+    closePopup(popupElement);
+  }
+};
+
+
+function openPopup( popupElement) {
   popupElement.classList.add('popup_opened');
+  document.addEventListener('keydown', function(evt) {closePopupwithEsc(evt, popupElement)});
+  document.addEventListener('mousedown', function(evt) {closePopupwithOverlay(evt, popupElement)});
+}
+
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', function(evt) {closePopupwithEsc(evt, popupElement)});
+  document.removeEventListener('mousedown', function(evt) {closePopupwithOverlay(evt, popupElement)});
 }
 
 function openPropfilePopup() { 
@@ -76,11 +97,7 @@ function openPropfilePopup() {
   openPopup(formPopupProfile)
 }
 
-const closePopup = function(popupElement) {
-  popupElement.classList.remove('popup_opened');
-}
-
-function handleFormPopupProfileSubmit (evt) {
+function handleFormPopupProfileSubmit(evt) {
   evt.preventDefault();
 
   profileNameElement.textContent = nameInput.value;
@@ -95,5 +112,5 @@ buttonAddCard.addEventListener('click', function() {openPopup(formPopupCard)});
 formPopupProfile.querySelector('.popup__close').addEventListener('click', function() {closePopup(formPopupProfile)});
 formPopupCard.querySelector('.popup__close').addEventListener('click', function() {closePopup(formPopupCard)});
 popupPicElement.querySelector('.popup__close').addEventListener('click', function() {closePopup(popupPicElement)});
-formPopupProfile.querySelector('.popup__content').addEventListener('submit',handleFormPopupProfileSubmit);
+formPopupProfile.querySelector('.popup__content').addEventListener('submit', handleFormPopupProfileSubmit);
 formPopupCard.querySelector('.popup__content').addEventListener('submit', addCard);
