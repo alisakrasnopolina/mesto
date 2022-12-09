@@ -1,4 +1,4 @@
-.popup__text_type_error:invalid {
+.popup__input_type_error:invalid {
   border-bottom: 1px solid #FF0000;
   margin: 0;
 }
