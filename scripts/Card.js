@@ -1,10 +1,11 @@
-import {popupPicElement, cardName, cardPic, openPopup} from './index.js'
-
 export class Card {
-  constructor(data, templateSelector) {
+
+  constructor(data, templateSelector, openPicPopup) {
     this._templateSelector = templateSelector;
     this._name = data.name;
     this._link = data.link;
+    this._openPicPopup = openPicPopup;
+    this._handleTrashClick = this._handleTrashClick.bind(this);
   }
 
   _getTemplate() {
@@ -21,35 +22,26 @@ export class Card {
     evt.target.classList.toggle('elements__heart_condition_active');
   }
   
-  _handleTrashClick(evt) {
-    evt.target.closest('.elements__card').remove();
+  _handleTrashClick() {
+    this._element.remove();
   }
 
   _setEventListeners() {
-    this._element.querySelector('.elements__heart').addEventListener('click', (evt) => {
-      this._handleLikeClick(evt);
-    });
+    this._element.querySelector('.elements__heart').addEventListener('click', this._handleLikeClick)
 
-    this._element.querySelector('.elements__trash').addEventListener('click', (evt) => {
-      this._handleTrashClick(evt);
-    });
+    this._element.querySelector('.elements__trash').addEventListener('click', this._handleTrashClick);
 
-    this._element.querySelector('.elements__pic').addEventListener('click', (evt) => {
-      openPopup(popupPicElement);
-      cardName.textContent = this._name;
-      cardPic.src = this._link;
-      cardPic.alt = `Изображение ${this._name}`;
-    });
+    this._cardPicElement.addEventListener('click',  () => {this._openPicPopup(this._name, this._link)});
   }
 
   generateCard() {
     this._element = this._getTemplate();
-    const cardPicElement = this._element.querySelector('.elements__pic');
+    this._cardPicElement = this._element.querySelector('.elements__pic');
     this._setEventListeners();
 
     this._element.querySelector('.elements__name').textContent = this._name;
-    cardPicElement.src = this._link;
-    cardPicElement.alt = `Изображение ${this._name}`;
+    this._cardPicElement.src = this._link;
+    this._cardPicElement.alt = `Изображение ${this._name}`;
 
     return this._element;
   }

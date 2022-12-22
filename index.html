@@ -17,12 +17,12 @@
         <div class="profile__info">
           <div class="profile__edit">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__edit-button hover"></button>
+            <button type="button" class="profile__edit-button hover" aria-label="open edit-profile popup"></button>
           </div>
           <p class="profile__occupation">Исследователь океана</p>
         </div>
       </div>
-      <button type="button" class="profile__add-button hover"></button>
+      <button type="button" class="profile__add-button hover" aria-label="open add-card popup"></button>
     </section>
     <section class="elements">
 
@@ -31,15 +31,15 @@
   <footer class="footer">
     <p class="footer__text">&copy;&nbsp;2022 Mesto Russia</p>
   </footer>
-  <div class="popup" id="popup_name_form">
+  <div class="popup" id="popup_name_edit-profile">
     <div class="popup__container">
       <div class="popup__content">
-        <button type="button" class="popup__close hover"></button>
+        <button type="button" class="popup__close hover" aria-label="close"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" id="popup_form_profile" novalidate>
-          <input id="name-input" type="text" placeholder="Имя" value="" class="popup__input popup__input_data_name" required minlength="2" maxlength="40">
+          <input id="name-input" type="text" placeholder="Имя" class="popup__input popup__input_data_name" required minlength="2" maxlength="40">
           <span class="popup__input-error name-input-error"></span>
-          <input id="about-input" type="text" placeholder="О себе" value="" class="popup__input popup__input_data_about" required minlength="2" maxlength="200">
+          <input id="about-input" type="text" placeholder="О себе" class="popup__input popup__input_data_about" required minlength="2" maxlength="200">
           <span class="popup__input-error about-input-error"></span>
           <button type="submit" class="popup__submit-button">Сохранить</button>
         </form>
@@ -49,22 +49,22 @@
   <div class="popup" id="popup_name_card">
     <div class="popup__container">
       <div class="popup__content">
-        <button type="button" class="popup__close hover"></button>
+        <button type="button" class="popup__close hover" aria-label="close"></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form" id="popup_form_card" novalidate>
-          <input  id="title-input" type="text" placeholder="Название" value="" class="popup__input popup__input_data_title" required minlength="2" maxlength="30">
+          <input  id="title-input" type="text" placeholder="Название" class="popup__input popup__input_data_title" required minlength="2" maxlength="30">
           <span class="popup__input-error title-input-error"></span>
-          <input  id="link-input" type="url" placeholder="Ссылка на картинку" value="" class="popup__input popup__input_data_link" required>
+          <input  id="link-input" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_data_link" required>
           <span class="popup__input-error link-input-error"></span>
           <button type="submit" class="popup__submit-button">Создать</button>
         </form>
       </div>
     </div>
   </div>
-  <div class="popup" id="popup_name_pic">
+  <div class="popup popup_name_pic" id="popup_name_pic">
     <div class="popup__container">
       <div class="popup__image">
-        <button type="button" class="popup__close hover"></button>
+        <button type="button" class="popup__close hover" aria-label="close"></button>
         <img alt="Изображение" class="popup__pic">
         <p class="popup__name"></p>
       </div> 
@@ -72,11 +72,11 @@
   </div>
   <template id="card">
     <div class="elements__card">
-      <button type="button" class="elements__trash hover"></button>
+      <button type="button" class="elements__trash hover" aria-label="delete card"></button>
       <img alt="Изображение" class="elements__pic">
       <div class="elements__description">
         <p class="elements__name"></p>
-        <button type="button" class="elements__heart"></button>
+        <button type="button" class="elements__heart" aria-label="like card"></button>
       </div>
     </div>
   </template> 
