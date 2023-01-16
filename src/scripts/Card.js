@@ -1,10 +1,10 @@
 export class Card {
 
-  constructor(data, templateSelector, openPicPopup) {
+  constructor(data, templateSelector, handleCardClick) {
     this._templateSelector = templateSelector;
     this._name = data.name;
     this._link = data.link;
-    this._openPicPopup = openPicPopup;
+    this._handleCardClick = handleCardClick;
     this._handleTrashClick = this._handleTrashClick.bind(this);
   }
 
@@ -31,7 +31,7 @@ export class Card {
 
     this._element.querySelector('.elements__trash').addEventListener('click', this._handleTrashClick);
 
-    this._cardPicElement.addEventListener('click',  () => {this._openPicPopup(this._name, this._link)});
+    this._cardPicElement.addEventListener('click',  () => {this._handleCardClick({name: this._name, link: this._link})});
   }
 
   generateCard() {

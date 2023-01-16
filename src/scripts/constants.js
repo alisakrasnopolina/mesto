@@ -33,3 +33,11 @@ export const validationSettings = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_type_active'
 }
+
+export const formPopupProfile = document.querySelector('#popup_form_profile');
+export const formPopupCard = document.querySelector('#popup_form_card');
+export const buttonEditPopup = document.querySelector('.profile__edit-button');
+export const buttonAddCard = document.querySelector('.profile__add-button');
+export const nameInput = document.querySelector('.popup__input_data_name');
+export const jobInput = document.querySelector('.popup__input_data_about');
+export const cards = document.querySelector('.elements');
