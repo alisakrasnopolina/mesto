@@ -3,16 +3,13 @@ import {initialCards,
   formPopupProfile,
   formPopupCard,
   buttonEditPopup,
-  buttonAddCard,
-  nameInput,
-  jobInput,
-  cards} from './constants.js'
-import {Card} from './Card.js'
-import {FormValidator} from './FormValidator.js'
-import {Section} from './Section.js'
-import {PopupWithImage} from './PopupWithImage.js'
-import {PopupWithForm} from './PopupWithForm.js'
-import {UserInfo} from './UserInfo.js'
+  buttonAddCard} from '../utils/constants.js'
+import {Card} from '../components/Card.js'
+import {FormValidator} from '../components/FormValidator.js'
+import {Section} from '../components/Section.js'
+import {PopupWithImage} from '../components/PopupWithImage.js'
+import {PopupWithForm} from '../components/PopupWithForm.js'
+import {UserInfo} from '../components/UserInfo.js'
 import '../pages/index.css';
 
 
@@ -38,7 +35,7 @@ const userInfo = new UserInfo({ nameSelector: '.profile__name', jobSelector: '.p
 const popupProfile = new PopupWithForm('#popup_name_edit-profile', ({name, about}) => userInfo.setUserInfo({name, about}))
 popupProfile.setEventListeners()
 
-const popupCard = new PopupWithForm('#popup_name_card', (data) => cards.prepend(createCard(data)))
+const popupCard = new PopupWithForm('#popup_name_card', (item) => initialCardList.addItemToStart(createCard(item)))
 popupCard.setEventListeners()
 
 const validationPopupProfile = new FormValidator(validationSettings, formPopupProfile);
@@ -48,7 +45,7 @@ const validationPopupCard = new FormValidator(validationSettings, formPopupCard)
 validationPopupCard.enableValidation(); 
 
 buttonEditPopup.addEventListener('click', () => {
-  nameInput.value = userInfo.getUserInfo().name;
-  jobInput.value = userInfo.getUserInfo().about;
+  const info = userInfo.getUserInfo();
+  popupProfile.setInputValues(info);
   popupProfile.open()});
 buttonAddCard.addEventListener('click', () => {popupCard.open()});
