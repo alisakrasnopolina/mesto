@@ -13,19 +13,18 @@
   <main class="content">
     <section class="profile">
       <div class="profile__user">
-        <img src="<%=require('./images/image_kusto.jpg')%>" alt="Аватар" class="profile__avatar">
+        <div class="profile__avatar" title="avatar"></div>
         <div class="profile__info">
           <div class="profile__edit">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button type="button" class="profile__edit-button hover" aria-label="кнопка открытия попапа для редактирования профиля"></button>
           </div>
-          <p class="profile__occupation">Исследователь океана</p>
+          <p class="profile__occupation"></p>
         </div>
       </div>
       <button type="button" class="profile__add-button hover" aria-label="кнопка открытия попапа для добавления карточки"></button>
     </section>
     <section class="elements">
-
     </section>
   </main>
   <footer class="footer">
@@ -70,13 +69,40 @@
       </div> 
     </div>
   </div>
+  <div class="popup popup_name_sure" id="popup_name_sure">
+    <div class="popup__container">
+      <div class="popup__content">
+        <button type="button" class="popup__close hover" aria-label="кнопка для закрытия попапа"></button>
+        <h2 class="popup__title popup__title_name_sure">Вы уверены?</h2>
+        <form class="popup__form" id="popup_form_sure" novalidate></form>
+          <button type="submit" class="popup__submit-button" id="button_sure">Да</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="popup" id="popup_name_edit-avatar">
+    <div class="popup__container">
+      <div class="popup__content">
+        <button type="button" class="popup__close hover" aria-label="кнопка для закрытия попапа"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="popup__form" id="popup_form_avatar" novalidate>
+          <input  id="link-input" name="link" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_data_link" required>
+          <span class="popup__input-error link-input-error"></span>
+          <button type="submit" class="popup__submit-button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </div>
   <template id="card">
     <div class="elements__card">
       <button type="button" class="elements__trash hover" aria-label="кнопка для удаления карточки"></button>
-      <img alt="Изображение" class="elements__pic">
+      <div class="elements__pic"></div>
       <div class="elements__description">
         <p class="elements__name"></p>
-        <button type="button" class="elements__heart" aria-label="кнопка лайка карточки"></button>
+        <div class="elements__likes">
+          <button type="button" class="elements__heart" aria-label="кнопка лайка карточки"></button>
+          <div class="elements__number-of-likes"></div>
+        </div>
       </div>
     </div>
   </template> 

@@ -1,8 +1,9 @@
 export class UserInfo {
 
-  constructor({nameSelector, jobSelector}) {
+  constructor({nameSelector, jobSelector, avatarSelector}) {
     this._nameSelector = document.querySelector(nameSelector);
     this._jobSelector = document.querySelector(jobSelector);
+    this._avatar = document.querySelector(avatarSelector);
   }
 
   getUserInfo() {
@@ -10,6 +11,10 @@ export class UserInfo {
       name: this._nameSelector.textContent,
       about: this._jobSelector.textContent 
     }
+  }
+
+  setAvatar(avatar) {
+    this._avatar.style.backgroundImage = `url('${avatar}')`;
   }
 
   setUserInfo({name, about}) {

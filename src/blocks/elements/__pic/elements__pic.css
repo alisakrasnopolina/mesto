@@ -4,4 +4,6 @@
   display: block;
   background-color: #000;
   cursor: pointer;
+  background-size: cover;
+  background-position: center;
 }
