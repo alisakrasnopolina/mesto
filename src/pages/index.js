@@ -25,7 +25,6 @@ const api = new Api({
   }
 });
 
-
 function handledeleteClick(card) {
   popupSure.setButtonText('Удаление...')
   api.deleteCard(card._id)
