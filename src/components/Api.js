@@ -4,18 +4,25 @@ export class Api {
     this._headers = headers;
   }
 
+  _getResponseData(res) {
+    if (!res.ok) {
+        return Promise.reject(`Ошибка: ${res.status}`); 
+    }
+    return res.json();
+  }
+
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(res => this._getResponseData(res))
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .then(res => this._getResponseData(res))
   }
 
   editProfile({name, about}) {
@@ -27,7 +34,7 @@ export class Api {
         about: about
       })
     })
-    .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+    .then(res => this._getResponseData(res))
   }
 
   addCard({name, link}) {
@@ -39,7 +46,7 @@ export class Api {
         link: link
       })
     })
-    .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+    .then(res => this._getResponseData(res))
   }
 
   deleteCard(id) {
@@ -47,7 +54,7 @@ export class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+    .then(res => this._getResponseData(res))
   }
 
   putLike(id) {
@@ -55,7 +62,7 @@ export class Api {
       method: 'PUT',
       headers: this._headers
     })
-    .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+    .then(res => this._getResponseData(res))
   }
 
   deleteLike(id) {
@@ -63,7 +70,7 @@ export class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+    .then(res => this._getResponseData(res))
   }
 
   editAvatar({link}) {
@@ -72,7 +79,7 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify({ avatar: link })
     })
-    .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+    .then(res => this._getResponseData(res))
   }
 }
 

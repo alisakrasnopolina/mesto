@@ -2,11 +2,11 @@ import {Popup} from './Popup.js'
 
 export class PopupWithConfirmation extends Popup {
 
-  constructor(popupSelector,handledeleteClick) {
+  constructor(popupSelector, handleDeleteClick) {
     super(popupSelector);
-    this._handledeleteClick = handledeleteClick;
-    this._form = this._selector.querySelector('.popup__form');
-    this._button = this._selector.querySelector('.popup__submit-button');
+    this._handleDeleteClick = handleDeleteClick;
+    this._form = this._popup.querySelector('.popup__form');
+    this._button = this._popup.querySelector('.popup__submit-button');
   }
 
   open(data) {
@@ -22,7 +22,7 @@ export class PopupWithConfirmation extends Popup {
     super.setEventListeners();
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._handledeleteClick(this._data)
+      this._handleDeleteClick(this._data)
     })
   }
 }

@@ -1,15 +1,16 @@
 export class UserInfo {
 
   constructor({nameSelector, jobSelector, avatarSelector}) {
-    this._nameSelector = document.querySelector(nameSelector);
-    this._jobSelector = document.querySelector(jobSelector);
+    this._name = document.querySelector(nameSelector);
+    this._job = document.querySelector(jobSelector);
     this._avatar = document.querySelector(avatarSelector);
   }
 
   getUserInfo() {
     return { 
-      name: this._nameSelector.textContent,
-      about: this._jobSelector.textContent 
+      name: this._name.textContent,
+      about: this._job.textContent, 
+      avatar: this._avatar.style.backgroundImage
     }
   }
 
@@ -18,7 +19,7 @@ export class UserInfo {
   }
 
   setUserInfo({name, about}) {
-    this._nameSelector.textContent = name;
-    this._jobSelector.textContent = about;
+    this._name.textContent = name;
+    this._job.textContent = about;
   }
 }

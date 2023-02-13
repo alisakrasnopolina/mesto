@@ -25,17 +25,16 @@ const api = new Api({
   }
 });
 
-function handledeleteClick(card) {
+function handleDeleteClick(card) {
   popupSure.setButtonText('Удаление...')
-  api.deleteCard(card._id)
+  api.deleteCard(card.getId())
     .then(() => {
-      console.log()
       card.deleteCard()
+      popupSure.close()
     })
     .catch((err) => {console.log(err)})
     .finally(() => {
       popupSure.setButtonText('Да')
-      popupSure.close()
     })
 }
 
@@ -45,14 +44,13 @@ function createCard(data) {
     user, 
     templateSelector: '#card',
     handleCardClick: () => popupWithImage.open(data),
-    handledeleteClick: () => {
+    handleDeleteClick: () => {
       popupSure.open(card)
     },
     handleLikeClick:  (id) => {
-    if (card.isLiked()) {
+    if (!card.isLiked()) {
       api.putLike(id)
         .then((res) => {
-          card._likes = res.likes
           card.toggleLike()
           card.setLikes(res.likes)
         })
@@ -60,7 +58,6 @@ function createCard(data) {
     } else {
       api.deleteLike(id)
         .then((res) => {
-          card._likes = res.likes
           card.toggleLike()
           card.setLikes(res.likes)
         })
@@ -72,17 +69,17 @@ function createCard(data) {
 };
 
 Promise.all([api.getProfile(), api.getInitialCards()])
-  .then(res => {
-    user = res[0]
-    userInfo.setUserInfo({name: res[0].name, about: res[0].about})
-    userInfo.setAvatar(res[0].avatar)
-    initialCardList.renderItems(res[1])
+  .then(([profileData, cards]) => {
+    user = profileData
+    userInfo.setUserInfo({name: profileData.name, about: profileData.about})
+    userInfo.setAvatar(profileData.avatar)
+    cardsSection.renderItems(cards)
   })
   .catch((err) => {console.log(err)}); 
 
-const initialCardList = new Section({
+const cardsSection = new Section({
   renderer: (item) => {
-    initialCardList.addItem(createCard(item));
+    cardsSection.appendItem(createCard(item));
   },
 }, '.elements');
 
@@ -91,17 +88,19 @@ popupWithImage.setEventListeners()
 
 const userInfo = new UserInfo({ nameSelector: '.profile__name', jobSelector: '.profile__occupation', avatarSelector: '.profile__avatar'});
 
-const popupSure = new PopupWithConfirmation('#popup_name_sure', (card) => {handledeleteClick(card)})
+const popupSure = new PopupWithConfirmation('#popup_name_sure', (card) => {handleDeleteClick(card)})
 popupSure.setEventListeners();
 
 const popupProfile = new PopupWithForm('#popup_name_edit-profile', ({name, about}) => {
   popupProfile.setButtonText('Сохранение...')
   api.editProfile({name, about})
-    .then(res => userInfo.setUserInfo({name: res.name, about: res.about}))
+    .then(res => {
+      userInfo.setUserInfo({name: res.name, about: res.about})
+      popupProfile.close()
+    })
     .catch((err) => {console.log(err)})
     .finally(() => {
       popupProfile.setButtonText('Сохранить')
-      popupProfile.close()
     }) 
 })
 popupProfile.setEventListeners()
@@ -109,11 +108,13 @@ popupProfile.setEventListeners()
 const popupAvatar = new PopupWithForm('#popup_name_edit-avatar', (avatar) => {
   popupAvatar.setButtonText('Сохранение...')
   api.editAvatar(avatar)
-    .then(res => {userInfo.setAvatar(res.avatar)})
+    .then(res => {
+      userInfo.setAvatar(res.avatar)
+      popupAvatar.close()
+    })
     .catch((err) => {console.log(err)})
     .finally(() => {
       popupAvatar.setButtonText('Сохранить')
-      popupAvatar.close()
     }) 
 })
 popupAvatar.setEventListeners()
@@ -121,11 +122,13 @@ popupAvatar.setEventListeners()
 const popupCard = new PopupWithForm('#popup_name_card', ({name, link}) => {
   popupCard.setButtonText('Создание...')
   api.addCard({name, link})
-    .then(res => {initialCardList.addItemToStart(createCard(res))})
+    .then(res => {
+      cardsSection.prependItem(createCard(res))
+      popupCard.close()
+    })
     .catch((err) => {console.log(err)})
     .finally(() => {
       popupCard.setButtonText('Создать')
-      popupCard.close()
     })
 })
 popupCard.setEventListeners()
